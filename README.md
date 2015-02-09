@@ -6,6 +6,8 @@ Proxy server for TTLiveAgentWidget. The main purpose of the proxy server is to s
 Installing
 ----------
 
+Before you start using this proxy server, you should duplicate `./config/config.example.js` and rename it to `./config/config.js`.
+
 Proxy server uses MySQL database. Before installing you should start your MySQL server and config it in `./config/config.js`. Also run `./sql/db.sql` script to create appropriate database. 
 
 All live agent configurations are placed in `./config/config.js`. For more info see **Configuration**.
