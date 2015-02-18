@@ -32,7 +32,7 @@ exports.start = function start(cb) {
             cb(err)
         } else {
             async.eachSeries(folders, function(folder, callback) {
-                rest.get(targetUrl + '/api/knowledgebase/articles?parent_id=' + folder.folderId + '&apikey=' + apiKey).on('complete', function(res) {
+                rest.get(targetUrl + '/api/knowledgebase/articles?parent_id=' + folder.folderId + '&apikey=' + apiKey + '&limit=500').on('complete', function(res) {
 
                     var articles = res.response.articles;
                     var articlesString = JSON.stringify(articles);

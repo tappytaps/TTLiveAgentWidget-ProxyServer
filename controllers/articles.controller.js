@@ -23,6 +23,9 @@ exports.getArticles = function getArticles(req, res) {
 
     var folderId = parsedURL.query['parent_id'];
     var queryHash = parsedURL.query['hash'];
+    var limit = parsedURL.query['limit'] || 500;
+
+console.log(limit)
 
     // If no folderId -> res with 404
     if (!folderId) {
@@ -57,7 +60,7 @@ exports.getArticles = function getArticles(req, res) {
                                 res.json({
                                     'up-to-date': false,
                                     'response': {
-                                        'articles': articles,
+                                        'articles': articles.slice(0, limit),
                                         'hash': hash
                                     }
                                 })
@@ -91,7 +94,7 @@ exports.getArticles = function getArticles(req, res) {
                             res.json({
                                 'up-to-date': false,
                                 'response': {
-                                    'articles': articles,
+                                    'articles': articles.slice(0, limit),
                                     'hash': hash
                                 }
                             })
@@ -99,6 +102,7 @@ exports.getArticles = function getArticles(req, res) {
 
                             // Add API key
                             parsedURL.query['apikey'] = apiKey;
+                            parsedURL.query['limit'] = 500;
 
                             // Create new url with API key
                             var urlWithApiKey = url.format({
@@ -130,7 +134,7 @@ exports.getArticles = function getArticles(req, res) {
                                             res.json({
                                                 'up-to-date': false,
                                                 'response': {
-                                                    'articles': articles,
+                                                    'articles': articles.slice(0, limit),
                                                     'hash': hash
                                                 }
                                             })

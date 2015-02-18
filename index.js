@@ -51,7 +51,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(myConnection(mysql, dbConfig, 'pool'));
 
-
 app.get('/api/knowledgebase/articles', articlesCtrl.getArticles);
 app.post('/api/conversations', generalCtrl.postWithApiKey);
 app.post('/api/customers', generalCtrl.postWithApiKey);
